@@ -1,32 +1,8 @@
-% Roshan M Regy, 2013A1PS646G
-% Problem 7.5.7, Cell Cycle Modelling 
-% main function used to call cell_cycle.m by ode45
-clear all
-close all
-u = .02;
-v = .566;
+ini = [1;.01;.0005;.5;3000;70];
+time = [0:.1:40];
 
-
-
-t =0:.1:1000;
-
-
-
-  
-
-ini = [u;v];
-
-
-[time,results] = ode45(@cell_cycle, t, ini);
-% 
-% figure
-% plot(time,results(:,1),'g')
-% hold on
-% plot(time,results(:,2),'r')
-% 
-% figure
-% plot(results(:,1),results(:,2))
-
+[t,results] = ode45(@lotka_volterra,time,ini);
+figure
 for i=1:100
 subplot(2,2,1);
 xlabel('Time')
